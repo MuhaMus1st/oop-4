@@ -19,16 +19,21 @@ interface PaymentMethod {
     void makePayment(int amount); // SRP: Defines a single responsibility - to make a payment
 }
 
-// SOLID: Encapsulation: CardPayment class encapsulates payment method using card, adheres to SRP
-class CardPayment implements PaymentMethod {
+// SOLID: Encapsulation: AbstractPaymentMethod serves as a base class for payment methods, adheres to SRP
+abstract class AbstractPaymentMethod implements PaymentMethod {
+    // Implement common functionalities here, if any
+}
+
+// SOLID: Encapsulation: CardPayment class encapsulates payment method using card, adheres to SRP and inheritance
+class CardPayment extends AbstractPaymentMethod {
     @Override
     public void makePayment(int amount) {
         System.out.println(amount + " paid with card");
     }
 }
 
-// SOLID: Encapsulation: PayPal class encapsulates payment method using PayPal, adheres to SRP
-class PayPal implements PaymentMethod {
+// SOLID: Encapsulation: PayPal class encapsulates payment method using PayPal, adheres to SRP and inheritance
+class PayPal extends AbstractPaymentMethod {
     @Override
     public void makePayment(int amount) {
         System.out.println(amount + " paid using PayPal");
