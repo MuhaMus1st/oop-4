@@ -1,14 +1,14 @@
 package org.exampl;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Library {
     private static Library instance;
-    private List<Book> books;
+    private Map<String, Book> books;
 
     private Library() {
-        books = new ArrayList<>();
+        books = new HashMap<>();
     }
 
     public static Library getInstance() {
@@ -19,19 +19,13 @@ public class Library {
     }
 
     public void addBook(Book book) {
-        books.add(book);
+        books.put(book.getTitle(), book);
     }
 
     public Book searchBook(String title) {
-        for (Book book : books) {
-            if (book.getTitle().equalsIgnoreCase(title) && book.isAvailable()) {
-                return book;
-            }
-        }
-        return null;
-    }
-
-    public List<Book> getBooks() {
-        return books;
+        Book book = books.get(title);
+        return (book != null && book.isAvailable()) ? book : null;
     }
 }
+
+

@@ -16,10 +16,6 @@ public class User {
         return name;
     }
 
-    public List<Book> getBorrowedBooks() {
-        return borrowedBooks;
-    }
-
     public void borrowBook(Book book) {
         borrowedBooks.add(book);
         book.borrow();
@@ -29,4 +25,9 @@ public class User {
         borrowedBooks.remove(book);
         book.returnBook();
     }
+
+    public List<Book> getBorrowedBooks() {
+        return borrowedBooks;
+    }
 }
+
