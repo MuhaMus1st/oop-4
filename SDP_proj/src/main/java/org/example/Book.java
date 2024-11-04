@@ -1,6 +1,6 @@
 package org.example;
 
-
+lplp
 public class Book {
     private String title;
     private String author;
